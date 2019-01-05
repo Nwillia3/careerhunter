@@ -1,42 +1,22 @@
 import React, { Component } from "react";
 
 class Jobs extends Component {
-  constructor() {
-    super();
-    this.state = {
-      jobs: []
-    };
-  }
-  componentDidMount() {
-    const url =
-      "https://indreed.herokuapp.com/api/jobs?q=JavaScript&country=us";
-    fetch(url)
-      .then(res => res.json())
-      .then(data => {
-        let jobs = data.map(job => {
-          console.log(job);
-          return (
-            <div className="col-sm-4" key={job.id}>
-              <div className="card ">
-                <div className="card-body">
-                  <h5 className="card-title">{job.title}</h5>
-                  <span> {job.company}</span>
-                  <br />
-                  <p className="card-text">{job.summary}</p>
-                </div>
-              </div>
-            </div>
-          );
-        });
-        this.setState({ jobs });
-      });
-  }
   render() {
-    return (
-      <div className="container">
-        <div className="row">{this.state.jobs}</div>
-      </div>
-    );
+    let jobs = this.props.jobs.map(job => {
+      return (
+        <div className="col-sm-4" key={job.id}>
+          <div className="card" style={{ minHeight: 340, topMargin: 10 }}>
+            <div className="card-header">{job.title}</div>
+            <div className="card-body">{job.company}</div>
+            <div className="card-body">
+              <p className="card-text">{job.summary}</p>
+            </div>
+            <div className="card-footer text-center">{job.salary}</div>
+          </div>
+        </div>
+      );
+    });
+    return <div className="row">{jobs}</div>;
   }
 }
 
