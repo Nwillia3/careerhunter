@@ -4,20 +4,28 @@ class Jobs extends Component {
   render() {
     let jobs = this.props.jobs.map(job => {
       return (
-        <div className="col-sm-4" key={job.id}>
+        <div
+          className="col-md-4 col-sm-6"
+          key={job.id}
+          style={{ paddingBottom: 5, paddingTop: 5 }}
+        >
           <div className="card" style={{ minHeight: 340, topMargin: 10 }}>
             <div className="card-header text-truncate">{job.title}</div>
             <div className="card-body">
-              <h3>{job.company}</h3>
+              <h4>{job.company}</h4>
+
+              <p className="card-text" style={{ minHeight: 50 }}>
+                {job.summary}
+              </p>
+              <a href={job.url} target="_blank" rel="noopener noreferrer">
+                <button className="btn btn-primary text-center">
+                  Read More
+                </button>
+              </a>
             </div>
-            <div className="card-body">
-              <p className="card-text">{job.summary}</p>
-              <button className="btn btn-primary text-center">
-                {" "}
-                Read more
-              </button>
+            <div className="card-footer text-center">
+              {job.salary === undefined ? "No salary reported" : job.salary}
             </div>
-            <div className="card-footer text-center">{job.salary}</div>
           </div>
         </div>
       );

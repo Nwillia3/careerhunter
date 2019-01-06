@@ -17,7 +17,7 @@ class App extends Component {
     e.preventDefault();
     const description = e.target.elements.description.value;
     const location = e.target.elements.location.value;
-    let url = `https://indreed.herokuapp.com/api/jobs?q=${description}&l=${location}&max=15`;
+    let url = `https://indreed.herokuapp.com/api/jobs?q=${description}&l=${location}&max=40`;
     // const sickoMode = { mode: "cors" };
 
     fetch(url)
@@ -31,6 +31,7 @@ class App extends Component {
       })
       .then(data => {
         const jobs = data;
+        console.log(jobs);
         this.setState({ jobs });
       });
     // .then(data => console.log(data));
@@ -47,16 +48,21 @@ class App extends Component {
       <div className="Container" style={{ padding: 10 }}>
         <h1>Career Hunter</h1>
         <p>
-          In order to use this app, you must have Cross Origin enabled on your
-          chrome extension.
+          In order to use this Desktop only app, you must have Cross Origin
+          enabled on your chrome extension. If you dont have a Cross Origin
+          Resource extension use
           <span>
-            If you dont have a Cross Origin Resource extension use
-            <a href="https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi?hl=en">
-              this Link
+            <a
+              style={{ textDecoration: "none" }}
+              href="https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi?hl=en"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span> this link</span>
             </a>
           </span>
         </p>
-        <div className="mx-auto" style={{ width: 300 }}>
+        <div className="mx-auto" style={{ width: 300, paddingBottom: 30 }}>
           <Form getJobs={this.getJobs} />
         </div>
 
