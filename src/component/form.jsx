@@ -9,7 +9,7 @@ class Form extends Component {
             type="text"
             className="form-control"
             name="description"
-            placeholder="Enter email"
+            placeholder="Enter job title, keyword (javascript, homecare...)"
           />
         </div>
         <div className="form-group">
