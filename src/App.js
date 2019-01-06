@@ -18,9 +18,9 @@ class App extends Component {
     const description = e.target.elements.description.value;
     const location = e.target.elements.location.value;
     let url = `https://indreed.herokuapp.com/api/jobs?q=${description}&l=${location}&max=15`;
-    const sickoMode = { mode: "cors" };
+    // const sickoMode = { mode: "cors" };
 
-    fetch(url, sickoMode)
+    fetch(url)
       .then(res => {
         if (res.status === 200) {
           console.log(res);
