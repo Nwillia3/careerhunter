@@ -44,9 +44,19 @@ class App extends Component {
 
   render() {
     return (
-      <div className="Container">
+      <div className="Container" style={{ padding: 10 }}>
         <h1>Career Hunter</h1>
-        <div className="mx-auto" style={{ width: 400 }}>
+        <p>
+          In order to use this app, you must have Cross Origin enabled on your
+          chrome extension.
+          <span>
+            If you dont have a Cross Origin Resource extension use
+            <a href="https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi?hl=en">
+              this Link
+            </a>
+          </span>
+        </p>
+        <div className="mx-auto" style={{ width: 300 }}>
           <Form getJobs={this.getJobs} />
         </div>
 
