@@ -4,26 +4,42 @@ import Jobs from "./component/jobs";
 import Form from "./component/form";
 
 class App extends Component {
-  state = {
-    jobs: []
-  };
+  constructor() {
+    super();
+    this.state = {
+      jobs: []
+    };
+
+    this.getJobs = this.getJobs.bind(this);
+  }
 
   getJobs = async e => {
     e.preventDefault();
     const description = e.target.elements.description.value;
     const location = e.target.elements.location.value;
+    let url = `https://indreed.herokuapp.com/api/jobs?q=${description}&l=${location}&max=15`;
+    const sickoMode = { mode: "cors" };
 
-    const api_call = await fetch(
-      `https://indreed.herokuapp.com/api/jobs?q=${description}&l=${location}&max=15`,
-      {
-        mode: "no-cors"
-      }
-    );
+    fetch(url, sickoMode)
+      .then(res => {
+        if (res.status === 200) {
+          console.log(res);
+          return res.json();
+        } else {
+          console.log("this is an error", res);
+        }
+      })
+      .then(data => {
+        const jobs = data;
+        this.setState({ jobs });
+      });
+    // .then(data => console.log(data));
 
-    const jobs = await api_call.json();
+    // const api_call = await fetch(url, { mode: "no-cors" });
 
-    this.setState({ jobs });
-    console.log(jobs);
+    // const jobs = await api_call.json();
+
+    // console.log(jobs);
   };
 
   render() {
