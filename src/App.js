@@ -17,7 +17,7 @@ class App extends Component {
     e.preventDefault();
     const description = e.target.elements.description.value;
     const location = e.target.elements.location.value;
-    let url = `https://indreed.herokuapp.com/api/jobs?q=${description}&l=${location}&max=40`;
+    let url = `https://cors-anywhere.herokuapp.com/https://indreed.herokuapp.com/api/jobs?q=${description}&l=${location}&max=40`;
     // const sickoMode = { mode: "cors" };
 
     fetch(url)
