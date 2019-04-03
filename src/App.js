@@ -47,21 +47,7 @@ class App extends Component {
     return (
       <div className="Container" style={{ padding: 10 }}>
         <h1>Career Hunter</h1>
-        <p>
-          In order to use this Desktop only app, you must have Cross Origin
-          enabled on your chrome extension. If you dont have a Cross Origin
-          Resource extension use
-          <span>
-            <a
-              style={{ textDecoration: "none" }}
-              href="https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi?hl=en"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <span> this link</span>
-            </a>
-          </span>
-        </p>
+        <p>Type in a role and a city to find your next job</p>
         <div className="mx-auto" style={{ width: 300, paddingBottom: 30 }}>
           <Form getJobs={this.getJobs} />
         </div>
