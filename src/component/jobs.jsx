@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import TruncateMarkup from "react-truncate-markup";
 
 class Jobs extends Component {
   render() {
@@ -13,10 +14,12 @@ class Jobs extends Component {
             <div className="card-header text-truncate">{job.title}</div>
             <div className="card-body">
               <h4>{job.company}</h4>
+              <TruncateMarkup lines={8}>
+                <p className="card-text" style={{ minHeight: 50 }}>
+                  {job.description}
+                </p>
+              </TruncateMarkup>
 
-              <p className="card-text" style={{ minHeight: 50 }}>
-                {job.summary}
-              </p>
               <a href={job.url} target="_blank" rel="noopener noreferrer">
                 <button className="btn btn-primary text-center">
                   Read More
