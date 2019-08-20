@@ -18,8 +18,7 @@ class App extends Component {
     e.preventDefault();
     const description = e.target.elements.description.value;
     const location = e.target.elements.location.value;
-    // let url = `https://cors-anywhere.herokuapp.com/https://indreed.herokuapp.com/api/jobs?q=&l=${location}&max=40`;
-    // let url = `https://indreed.herokuapp.com/api/jobs?q=${description}&l=${location}&country=us`;
+
     let url = `https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json?description=${description}&location=${location}`;
     fetch(url)
       .then(res => {
@@ -39,6 +38,7 @@ class App extends Component {
 
   render() {
     const { jobs } = this.state;
+    console.log(jobs);
     if (jobs === undefined) {
       return <Spinner />;
     } else {
